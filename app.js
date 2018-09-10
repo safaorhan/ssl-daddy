@@ -66,7 +66,10 @@ child.stdout.on('data', (data) => {
         createTxtRecord(record).then((response) => {
             if (response.status == 200) {
                 console.log('Done creating TXT record.');
-                checkRecordDeployed(record);
+                console.log('Waiting for 60 seconds to deploy...');
+                setTimeout(() => {
+                    checkRecordDeployed(record);
+                }, 60000);
             } else {
                 console.log('Error creating TXT record');
             }
